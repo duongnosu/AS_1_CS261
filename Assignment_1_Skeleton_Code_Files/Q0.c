@@ -7,7 +7,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
+/*********************************************************************
+** Function: fooA
+** Description:Print the value and address of the integer pointed to by ipt
+** Parameters: iptr pointer type int pointer
+** Pre-condition: None
+** Post-condition: Print out the adress and values
+*********************************************************************/
 void fooA(int* iptr){
 
      /*Print the value and address of the integer pointed to by iptr*/
@@ -21,7 +27,13 @@ void fooA(int* iptr){
 
 }
 
-
+/*********************************************************************
+** Function: fooB
+** Description:Print the value and address of the integer pointed to by ipt
+** Parameters: iptr pointer type int pointer
+** Pre-condition: None
+** Post-condition: Print out the adress and values
+*********************************************************************/
 void fooB(int* jptr){
 
      /*Print the value and address of the integer pointed to by jptr*/
@@ -61,6 +73,6 @@ int main(){
     printf("The value of x is =  %d\n", x );
     printf("The address of x is @ %p\n", &x);
     //The value of x now if different from the previous x becaues in fooB we decrement the value of the pointer points to by 1
-    // The adress of x is unchanged, because we did not do anything with the memory adress of x. 
+    // The adress of x is unchanged, because we did not do anything with the memory adress of x.
     return 0;
 }

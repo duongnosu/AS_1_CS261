@@ -7,6 +7,13 @@
 #include <stdlib.h>
 #include <time.h>
 
+/*********************************************************************
+** Function: foo
+** Description: Swap  the adresses stored by the pointer a and b and decrement c by 1
+** Parameters: pointer a,b and the int c
+** Pre-condition: None
+** Post-condition: Return c
+*********************************************************************/
 int foo(int* a, int* b, int c){
     /*Swap the addresses stored in the pointer variables a and b*/
     int *temp;
@@ -51,3 +58,4 @@ int main(){
 
 //4a, Is the return value different than the value of integer z? Why or why not?
 // The return value is diffrent from the value of z because in foo function, we decrement the value of z and return it after
+//4b. The value of a and b does not change. Because we only modified the adress of the pointer. Not where the pointer point to .
