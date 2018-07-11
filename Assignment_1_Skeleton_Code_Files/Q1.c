@@ -183,6 +183,7 @@ void summary(struct student* students){
 *********************************************************************/
 void deallocate(struct student* stud){
      /*Deallocate memory from stud*/
+     free (stud);
 }
 
 int main(){
@@ -199,6 +200,6 @@ int main(){
     /*Call summary*/
     summary(stud);
     /*Call deallocate*/
-
+    deallocate(stud);
     return 0;
 }
