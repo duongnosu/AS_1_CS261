@@ -56,25 +56,41 @@ void generate(struct student* students){
 
 
           int theid;
+          int thescore;
           int count;
+          int count2;
           int arrayid[9];
+          int arrayscore[9];
           for (int j=0; j<10; j++){
                arrayid[j] =0;
+               arrayscore[j]=0;
           }
           count = 0;
+          count2= 0;
           theid = rand()%10 +1;
+          thescore = rand()%101;
           arrayid[count]= theid;
-          printf("ArrayID-  %d\n", arrayid[count] );
+          arrayscore[count2]=thescore;
+          // printf("ArrayID-  %d\n", arrayid[count] );
           count = count +1;
-
+          count2= count2 +1;
           while (count <10) {
                theid = rand()%10 +1;
+
                if(array_contain(theid, arrayid) == 0){
                     arrayid[count] = theid;
+                    count ++;
                }
-               count ++;
 
-               printf("ArrayID-  %d\n", arrayid[count-1] );
+
+               // printf("ArrayID-  %d\n", arrayid[count-1] );
+          }
+          while (count2 <10){
+               thescore = rand()%101;
+               if(array_contain(thescore, arrayscore) ==0){
+                    arrayscore[count2] = thescore;
+                    count2++;
+               }
           }
 
           printf("\n");
@@ -82,8 +98,11 @@ void generate(struct student* students){
 
           for (int i=0; i<10; i++){
                students[i].id = arrayid[i];
-               printf(" student ID %d\n", students[i].id );
+               students[i].score = arrayscore[i];
+               // printf(" student ID %d\n", students[i].id );
+               // printf(" student score  %d\n", students[i].score );
           }
+
 
      //      int arrayid[9];
      //      for (int k=0; k<10; k++){
@@ -112,12 +131,15 @@ void generate(struct student* students){
 ** Post-condition: Print out information
 *********************************************************************/
 void output(struct student* students){
+for (int i=0; i<10; i++){
+     printf("ID %d Score %d\n",students[i].id , students[i].score);
      /*Output information about the ten students in the format:
               ID1 Score1
               ID2 score2
               ID3 score3
               ...
-              ID10 score10*/
+             ID10 score10*/
+        }
 }
 /*********************************************************************
 ** Function: summary
@@ -129,7 +151,26 @@ ten students
 *********************************************************************/
 void summary(struct student* students){
      /*Compute and print the minimum, maximum and average scores of the
-ten students*/
+     ten students*/
+     int min, max;
+     max = students[0].score;
+     min = students[0].score;
+     for (int i=0; i<10; i++){
+          if (students[i].score > max){
+               max = students[i].score;
+          }
+          if (students[i].score < min){
+               min = students[i].score;
+          }
+     }
+     printf(" Max score = %d Min score = %d\n", max, min );
+     float avg;
+     int sum = 0;
+     for (int j= 0; j<10; j++){
+          sum = sum + students[j].score;
+     }
+     avg = (float)sum/10;
+     printf("  average score =  %f\n", avg);
 
 }
 
@@ -138,7 +179,7 @@ ten students*/
 ** Description: Deallocate memory from stud
 ** Parameters: student type pointer stud
 ** Pre-condition: None
-** Post-condition: None 
+** Post-condition: None
 *********************************************************************/
 void deallocate(struct student* stud){
      /*Deallocate memory from stud*/
@@ -152,10 +193,11 @@ int main(){
     stud = allocate();
     /*Call generate*/
     generate(stud);
+    output(stud);
     /*Call output*/
 
     /*Call summary*/
-
+    summary(stud);
     /*Call deallocate*/
 
     return 0;
